@@ -1,2 +1,2 @@
 # GNN-playground
-mess around with GNN, seems interesting
+mess around with GNN, seems interesting.
