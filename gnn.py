@@ -1,3 +1,4 @@
+from email import message
 from torch import nn
 from torch.nn.parameter import Parameter
 import torch
@@ -12,6 +13,8 @@ from torch_geometric.data import Data
 import matplotlib.pyplot as plt
 import sklearn.manifold
 from sklearn.manifold import TSNE
+import messaging_passing
+import nn_message_passing_layer
 
 ################################## VISUALIZATION ##############################################
 def visualize_graph(graph):
@@ -84,6 +87,19 @@ y = torch.tensor([
 ])
 
 graph = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y)
-print(graph)
 
-visualize_graph(graph)
+# visualize_graph(graph)
+
+aggr_value = "mean"
+# pass message only one time
+# MessagePassing = messaging_passing.self_designed_MessagePassingLayer(aggr=aggr_value)
+# graph.x = MessagePassing(graph.x, graph.edge_index)
+# print(graph.x)
+
+print("--------------------------------------------------------------")
+
+# pass message ten times
+# MessagePassing = messaging_passing.self_designed_MessagePassingLayer(aggr=aggr_value)
+# for i in range(0,10):
+#     graph.x = MessagePassing(graph.x, edge_index)
+#     print(graph.x)
